@@ -1,0 +1,6 @@
+key = "89cece8392ec4396b5c174920232911"  ## для f"https://api.weatherapi.com/v1/current.json?key={key}&q={lat},{lon}"
+
+
+key = "86253274-a5ef-42fa-b87a-8c1a9cbf509b"  ## для Яндекс погоды  curl -H "X-Yandex-API-Key: 86253274-a5ef-42fa-b87a-8c1a9cbf509b" "https://api.weather.yandex.ru/v2/forecast?lat=59.93&lon=30.31"
+
+
