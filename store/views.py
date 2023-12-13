@@ -44,6 +44,8 @@ def products_page_view(request, page):
                     products = f.read()
                 return HttpResponse(products)
 
+
+
         # Если за всё время поиска не было совпадений, то значит по данному имени нет соответствующей
         # страницы товара и можно вернуть ответ с ошибкой HttpResponse(status=404)
     return HttpResponse(status=404)
