@@ -16,8 +16,8 @@ from weather_api import current_weather
 
 def weather_view(request):
     if request.method == "GET":
-        lat = request.GET.get(55.75)  # данные придут в виде строки
-        lon = request.GET.get(37.61)  # данные придут в виде строки
+        lat = request.GET.get("lat")  # данные придут в виде строки
+        lon = request.GET.get("lon")  # данные придут в виде строки
         if lat and lon:
             data = current_weather(lat=lat, lon=lon)
         else:

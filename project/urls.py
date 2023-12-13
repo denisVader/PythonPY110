@@ -32,10 +32,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('random/', random_view),
     path('datetime/', datetime_view),
-    path('weather/', weather_view),
+    # path('weather/', weather_view),
     path('product/', products_view),
     path('', shop_view),
     path('', include('store.urls')),
-    path('weather/', include('store.urls'))
+    path('weather/', include('app_weather.urls'))
 ]
 
