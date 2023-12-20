@@ -14,24 +14,23 @@ def products_view(request):
                 if product["id"] == int(id):
                     return JsonResponse(product, json_dumps_params={'ensure_ascii': False,
                                                          'indent': 4})
-            # return HttpResponseNotFound("Данного продукта нет в базе данных")
-        else:
-            return JsonResponse(DATABASE, json_dumps_params={'ensure_ascii': False,
-                                                            'indent': 4})
-    return HttpResponseNotFound("Данного продукта нет в базе данных")
+            return HttpResponseNotFound("Данного продукта нет в базе данных")
+        # return JsonResponse(DATABASE, json_dumps_params={'ensure_ascii': False,
+        #                                                     'indent': 4})
 
-
-    category_key = request.GET.get('category')  # Считали 'category'
-    if ordering_key := request.GET.get('ordering'):  # Если в параметрах есть 'ordering'
-        if request.GET.get('reverse') in ('true', 'True'):  # Если в параметрах есть 'ordering' и 'reverse'=True
-            data = [product for product in DATABASE.values() if ]  # TODO Провести фильтрацию с параметрами
+        if category_key := request.GET.get('category'):  # Считали 'category'
+            if ordering_key := request.GET.get('ordering'):  # Если в параметрах есть 'ordering'
+                if str(request.GET.get("reverse")).lower() == 'true':  # Если в параметрах есть 'ordering' и 'reverse'=True
+                    data = filtering_category(DATABASE, category_key, ordering_key, reverse=True)  # TODO Провести фильтрацию с параметрами
+                else:
+                    data = filtering_category(DATABASE, category_key, ordering_key)  # TODO Провести фильтрацию с параметрами
+            else:
+                data = filtering_category(DATABASE, category_key)  # TODO Провести фильтрацию с параметрами
         else:
-            data = ...  # TODO Провести фильтрацию с параметрами
-    else:
-        data = ...  # TODO Провести фильтрацию с параметрами
-    # В этот раз добавляем параметр safe=False, для корректного отображения списка в JSON
-    return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False,
-                                                             'indent': 4})
+            data = DATABASE
+        # В этот раз добавляем параметр safe=False, для корректного отображения списка в JSON
+        return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False,
+                                                                 'indent': 4})
 
 
 
