@@ -99,47 +99,50 @@
 						      </tr>
 						    </thead>
 						    <tbody>
+							  {% for product in products %}
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url({% static 'store/images/product-1.jpg' %});"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url({% static product.url %})"></div></td>
 						        
 						        <td class="product-name">
-						        	<h3>Болгарский перец</h3>
-						        	<p>Сочный и яркий, он добавит красок и вкуса в ваши блюда.</p>
+						        	<h3>{{product.name}}</h3>
+						        	<p>{{product.description}}</p>
 						        </td>
 						        
-						        <td class="price">210.00</td>
+						        <td class="price">{{product.price_after}}</td>
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
-					             	<input type="number" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+					             	<input type="number" name="quantity" class="quantity form-control input-number" value={{product.quantity}} min="1" max="100">
 					          	</div>
 					          </td>
 						        
-						        <td class="total">210.00</td>
+						        <td class="total">{{product.price_total}}</td>
 						      </tr><!-- END TR-->
-
+							  {% endfor %}
+                              {% for product in products %}
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url({% static 'store/images/product-2.jpg' %});"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url({% static product.url %})"></div></td>
 						        
 						        <td class="product-name">
-						        	<h3>Клубника</h3>
-						        	<p>Сладкая и ароматная клубника, полная витаминов, чтобы сделать ваш день ярче.</p>
+						        	<h3>{{product.name}}</h3>
+						        	<p>{{product.description}}</p>
 						        </td>
 						        
-						        <td class="price">500.00</td>
+						        <td class="price">{{product.price_after}}</td>
 						        
 						        <td class="quantity">
 						        	<div class="input-group mb-3">
-					             	<input type="number" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+					             	<input type="number" name="quantity" class="quantity form-control input-number" value={{product.quantity}} min="1" max="100">
 					          	</div>
 					          </td>
 						        
-						        <td class="total">500.00</td>
+						        <td class="total">{{product.price_total}}</td>
 						      </tr><!-- END TR-->
+							  {% endfor %}
 						    </tbody>
 						  </table>
 					  </div>
