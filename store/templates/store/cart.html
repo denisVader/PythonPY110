@@ -38,7 +38,7 @@
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="{% url 'store:remove_now' product.id %}"><span class="ion-ios-close"></span></a></td>
 
-						        <td class="image-prod"><div class="img" style="background-image:url({% static product.url %})"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image: url({% static  product.url %});"></div></td>
 						        
 						        <td class="product-name">
 						        	<h3>{{product.name}}</h3>

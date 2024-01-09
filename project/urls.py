@@ -36,6 +36,7 @@ urlpatterns = [
     #path('product/', products_view),
     path('', shop_view),
     path('', include('store.urls')),
-    path('weather/', include('app_weather.urls'))
+    path('weather/', include('app_weather.urls')),
+    path('login/', include('app_login.urls')),
 ]
 
