@@ -22,7 +22,7 @@ from app_datetime.views import datetime_view
 from app_weather.views import weather_view
 from store.views import products_view
 from store.views import shop_view
-
+from wishlist.views import wishlist_view
 def random_view(request):
     if request.method == "GET":
         data = random()
@@ -38,5 +38,6 @@ urlpatterns = [
     path('', include('store.urls')),
     path('weather/', include('app_weather.urls')),
     path('login/', include('app_login.urls')),
+    path('wishlist/', include('wishlist.urls')),
 ]
 
