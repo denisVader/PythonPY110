@@ -108,7 +108,7 @@ def cart_add_view(request, id_product):
                             json_dumps_params={'ensure_ascii': False})
 
 
-def cart_del_view(request, id_product):
+def cart_del_json_view(request, id_product):
     if request.method == "GET":
         result = remove_from_cart(request, id_product) #  Вызвать ответственную за это действие функцию и передать необходимые параметры
         if result:
@@ -178,7 +178,7 @@ def cart_buy_now_view(request, id_product):
 
         return HttpResponseNotFound("Неудачное добавление в корзину")
 
-def cart_remove_view(request, id_product):
+def cart_del_html_view(request, id_product):
     if request.method == "GET":
         result = remove_from_cart(request, id_product)  # Вызвать функцию удаления из корзины
         if result:

@@ -171,14 +171,12 @@ def add_to_wishlist(request, id_product: str) -> bool:
         return False
 
     base_products = wishlist["products"]
-    if id_product in base_products:
-        base_products[id_product] += 1
-    else:
-        base_products[id_product] = 1
-    with open('wishlist.json', mode='w', encoding='utf-8') as f:   # Создаём файл и записываем туда
-        json.dump(wishlist_users, f)
-
-    return True
+    if id_product not in base_products:
+        base_products.append(id_product)
+        with open('wishlist.json', mode='w', encoding='utf-8') as f:   # Создаём файл и записываем туда
+            json.dump(wishlist_users, f)
+        return True
+    return False
 
 def remove_from_wishlist(request, id_product: str) -> bool:
     """
@@ -198,12 +196,11 @@ def remove_from_wishlist(request, id_product: str) -> bool:
 
     base_products = wishlist["products"]
     if id_product in base_products:
-        base_products.pop(id_product)
-
-    with open('wishlist.json', mode='w', encoding='utf-8') as f:  # Создаём файл и записываем туда пустую корзину
-        json.dump(wishlist_users, f)
-
-    return True
+        base_products.remove(id_product)
+        with open('wishlist.json', mode='w', encoding='utf-8') as f:  # Создаём файл и записываем туда пустую корзину
+            json.dump(wishlist_users, f)
+        return True
+    return False
 
 
 def add_user_to_wishlist(request, username: str) -> None:
